@@ -28,38 +28,32 @@ public class MainViewController implements Initializable {
 	public void onMenuItemVendedorAction() {
 		System.out.println("onMenuItemVendedorAction");
 	}
-	@FXML
+	@FXML 
 	public void onMenuItemDepartamentosAction() {
-		System.out.println("onMenuItemDepartamentosAction");
+		loadView("/gui/DepartamentList.fxml");
 	}
 	@FXML
 	public void onMenuItemAboutAction() {
-		loadView("/gui/About/fxml");
+		loadView("/gui/About.fxml");
 	}
-	
-
-
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 
 	}
-	public void loadView(String absolutename) {
+	public synchronized void  loadView(String absolutename) {
 		try {
-		
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(absolutename));
-			VBox newVbox = loader.load();
+			VBox newVBox = loader.load();
 			
 			Scene mainScene = Main.getMainScene();
-			
 			VBox mainVBox = (VBox) ((ScrollPane)mainScene.getRoot()).getContent();
 			
 			Node mainMenu = mainVBox.getChildren().get(0);
 			mainVBox.getChildren().clear();
 			mainVBox.getChildren().add(mainMenu);
-			mainVBox.getChildren().addAll(newVbox.getChildren());
+			mainVBox.getChildren().addAll(newVBox.getChildren());
 		}
-		
 		catch(IOException e) {
 			Alerts.showAlert("IO Excepitio", "Error loding view", e.getMessage(), AlertType.ERROR);
 		}
