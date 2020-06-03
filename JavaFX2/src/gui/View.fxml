@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ViewController">
+   <children>
+      <Label layoutX="65.0" layoutY="43.0" prefHeight="17.0" prefWidth="116.0" text="Calculator sum" />
+      <TextField layoutX="65.0" layoutY="74.0" promptText="First number" />
+      <TextField layoutX="65.0" layoutY="119.0" promptText="Second number" />
+   </children>
+</AnchorPane>
