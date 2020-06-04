@@ -14,32 +14,32 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import model.entities.Departament;
-import model.service.DepartamentService;
+import model.entities.Department;
+import model.service.DepartmentService;
 
 public class DepartmentListController implements Initializable {
 	
-	private DepartamentService service ;
+	private DepartmentService service ;
 	
 	@FXML
-	private TableView<Departament> tableViewDepartament;
+	private TableView<Department> tableViewDepartment;
 	
 	@FXML
-	private TableColumn<Departament, Integer> tableColumnId;
+	private TableColumn<Department, Integer> tableColumnId;
 	
 	@FXML
-	private TableColumn<Departament, String> tableColumnName;
+	private TableColumn<Department, String> tableColumnName;
 	
 	@FXML
 	private Button btNew;
 	
-	private ObservableList<Departament> oblist;
+	private ObservableList<Department> oblist;
 	
 	@FXML
 	public void onBtNewAction() {
 		System.out.println("onBtNewAction");
 	}
-	public void setDepartamentService(DepartamentService service) {
+	public void setDepartamentService(DepartmentService service) {
 		this.service = service;
 	}
 	
@@ -55,16 +55,16 @@ public class DepartmentListController implements Initializable {
 		tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
 		
 		Stage stage = (Stage) Main.getMainScene().getWindow();
-		tableViewDepartament.prefHeightProperty().bind(stage.heightProperty());
+		tableViewDepartment.prefHeightProperty().bind(stage.heightProperty());
 	}
 	
 	public void updateTableView() {
 		if(service == null) {
 			throw new IllegalStateException("Service was null");
 		}
-		List<Departament> list = service.findAll();
+		List<Department> list = service.findAll();
 		oblist = FXCollections.observableArrayList(list);
-		tableViewDepartament.setItems(oblist);
+		tableViewDepartment.setItems(oblist);
 	}
 
 }
